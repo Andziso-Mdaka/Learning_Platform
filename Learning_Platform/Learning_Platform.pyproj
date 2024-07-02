@@ -93,6 +93,13 @@
     <Compile Include="Subject_management\tests.py" />
     <Compile Include="Subject_management\views.py" />
     <Compile Include="Subject_management\__init__.py" />
+    <Compile Include="User_management\admin.py" />
+    <Compile Include="User_management\apps.py" />
+    <Compile Include="User_management\migrations\__init__.py" />
+    <Compile Include="User_management\models.py" />
+    <Compile Include="User_management\tests.py" />
+    <Compile Include="User_management\views.py" />
+    <Compile Include="User_management\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin_dashboard\" />
@@ -133,6 +140,10 @@
     <Folder Include="subject_management\migrations\" />
     <Folder Include="subject_management\templates\" />
     <Folder Include="subject_management\templates\subject_management\" />
+    <Folder Include="User_management\" />
+    <Folder Include="User_management\migrations\" />
+    <Folder Include="User_management\templates\" />
+    <Folder Include="User_management\templates\User_management\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin_dashboard\templates\admin_dahsboard\index.html" />
@@ -172,6 +183,7 @@
     <Content Include="Student_Management\templates\Student_Management\index.html" />
     <Content Include="Subject_content_management\templates\Subject_content_management\index.html" />
     <Content Include="subject_management\templates\subject_management\index.html" />
+    <Content Include="User_management\templates\User_management\index.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">
