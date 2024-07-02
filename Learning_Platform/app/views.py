@@ -30,16 +30,16 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
-# Correctly indented 'home' function
+
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/home.html',
+        'app/index.html',
         {
-            'title': 'Home Page',
-            'year': datetime.now().year,
+            'title':'Home Page',
+            'year':datetime.now().year,
         }
     )
 
@@ -68,3 +68,8 @@ def about(request):
             'year':datetime.now().year,
         }
     )
+
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("Welcome to the Learning Platform!")
