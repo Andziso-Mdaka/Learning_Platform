@@ -1,30 +1,45 @@
-"""
-Definition of views.
-"""
-
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
+
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
-class HelloWorldView(APIView):
-    permission_classes = (IsAuthenticated,)
+class SecureView(APIView):
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        return Response(data={"message": "Hello, world!"}, status=200)
+        return Response({"message": "This is a secure endpoint."})
 
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+        # Add custom claims
+        token['username'] = user.username
+        return token
 
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+
+# Correctly indented 'home' function
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/index.html',
+        'app/home.html',
         {
-            'title':'Home Page',
-            'year':datetime.now().year,
+            'title': 'Home Page',
+            'year': datetime.now().year,
         }
     )
 
