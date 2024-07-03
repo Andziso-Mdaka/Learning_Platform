@@ -1,6 +1,7 @@
 # subject_management/models.py
 from django.db import models
-from .models import Qualification
+from Qualification_management.models import Qualification
+from User_management.models import User
 import uuid
 
 class Subject(models.Model):
@@ -15,9 +16,7 @@ class Subject(models.Model):
         return self.name
 
 
-from django.db import models
-from .models import User, Qualification
-import uuid
+
 
 class Student(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)

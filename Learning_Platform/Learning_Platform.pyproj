@@ -4,6 +4,8 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>Learning_Platform</Name>
     <RootNamespace>Learning_Platform</RootNamespace>
+    <SuppressEnvironmentCreationPrompt>True</SuppressEnvironmentCreationPrompt>
+    <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -32,7 +34,6 @@
   <ItemGroup>
     <Compile Include="Admin_dashboard\admin.py" />
     <Compile Include="Admin_dashboard\apps.py" />
-    <Compile Include="admin_dashboard\migrations\__init__.py" />
     <Compile Include="Admin_dashboard\models.py" />
     <Compile Include="Admin_dashboard\tests.py" />
     <Compile Include="Admin_dashboard\views.py" />
@@ -48,7 +49,7 @@
     <Compile Include="app\migrations\__init__.py" />
     <Compile Include="Content_management\admin.py" />
     <Compile Include="Content_management\apps.py" />
-    <Compile Include="content_management\migrations\__init__.py" />
+    <Compile Include="Content_management\migrations\__init__.py" />
     <Compile Include="Content_management\models.py" />
     <Compile Include="Content_management\tests.py" />
     <Compile Include="Content_management\views.py" />
@@ -88,7 +89,7 @@
     <Compile Include="Subject_content_management\__init__.py" />
     <Compile Include="Subject_management\admin.py" />
     <Compile Include="Subject_management\apps.py" />
-    <Compile Include="subject_management\migrations\__init__.py" />
+    <Compile Include="Subject_management\migrations\__init__.py" />
     <Compile Include="Subject_management\models.py" />
     <Compile Include="Subject_management\tests.py" />
     <Compile Include="Subject_management\views.py" />
@@ -103,9 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin_dashboard\" />
-    <Folder Include="admin_dashboard\migrations\" />
-    <Folder Include="admin_dashboard\templates\" />
-    <Folder Include="admin_dashboard\templates\admin_dahsboard\" />
+    <Folder Include="Admin_dashboard\migrations\" />
+    <Folder Include="Admin_dashboard\templates\" />
+    <Folder Include="Admin_dashboard\templates\Admin_dashboard\" />
     <Folder Include="app\" />
     <Folder Include="app\migrations\" />
     <Folder Include="app\static\" />
@@ -116,9 +117,9 @@
     <Folder Include="app\templates\" />
     <Folder Include="app\templates\app\" />
     <Folder Include="Content_management\" />
-    <Folder Include="content_management\migrations\" />
-    <Folder Include="content_management\templates\" />
-    <Folder Include="content_management\templates\content_management\" />
+    <Folder Include="Content_management\migrations\" />
+    <Folder Include="Content_management\templates\" />
+    <Folder Include="Content_management\templates\Content_management\" />
     <Folder Include="Learning_Platform\" />
     <Folder Include="Lecturer_management\" />
     <Folder Include="Lecturer_management\migrations\" />
@@ -137,17 +138,17 @@
     <Folder Include="Subject_content_management\templates\" />
     <Folder Include="Subject_content_management\templates\Subject_content_management\" />
     <Folder Include="Subject_management\" />
-    <Folder Include="subject_management\migrations\" />
-    <Folder Include="subject_management\templates\" />
-    <Folder Include="subject_management\templates\subject_management\" />
+    <Folder Include="Subject_management\migrations\" />
+    <Folder Include="Subject_management\templates\" />
+    <Folder Include="Subject_management\templates\Subject_management\" />
     <Folder Include="User_management\" />
     <Folder Include="User_management\migrations\" />
     <Folder Include="User_management\templates\" />
     <Folder Include="User_management\templates\User_management\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin_dashboard\templates\admin_dahsboard\index.html" />
-    <Content Include="content_management\templates\content_management\index.html" />
+    <Content Include="Admin_dashboard\templates\Admin_dashboard\index.html" />
+    <Content Include="Content_management\templates\Content_management\index.html" />
     <Content Include="Lecturer_management\templates\Lecturer_management\index.html" />
     <Content Include="Qualification_management\templates\Qualification_management\index.html" />
     <Content Include="requirements.txt" />
@@ -182,7 +183,7 @@
     <Content Include="app\templates\app\loginpartial.html" />
     <Content Include="Student_Management\templates\Student_Management\index.html" />
     <Content Include="Subject_content_management\templates\Subject_content_management\index.html" />
-    <Content Include="subject_management\templates\subject_management\index.html" />
+    <Content Include="Subject_management\templates\Subject_management\index.html" />
     <Content Include="User_management\templates\User_management\index.html" />
   </ItemGroup>
   <ItemGroup>

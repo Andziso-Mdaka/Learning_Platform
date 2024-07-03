@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class subject_managementConfig(AppConfig):
-    name = 'subject_management'
+class Subject_managementConfig(AppConfig):
+    name = 'Subject_management'

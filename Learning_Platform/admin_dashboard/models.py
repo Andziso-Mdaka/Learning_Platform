@@ -1,6 +1,6 @@
 # admin_dashboard/models.py
 from django.db import models
-from .models import User
+from User_management.models import User
 import uuid
 
 class AuditLog(models.Model):

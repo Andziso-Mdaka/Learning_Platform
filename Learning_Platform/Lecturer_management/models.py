@@ -1,6 +1,7 @@
 # lecturer_management/models.py
 from django.db import models
-from .models import User, Qualification
+from User_management.models import User
+from Qualification_management.models import Qualification
 import uuid
 
 class Lecturer(models.Model):

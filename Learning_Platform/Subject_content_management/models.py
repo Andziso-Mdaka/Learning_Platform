@@ -1,6 +1,7 @@
 # subject_content_management/models.py
 from django.db import models
-from .models import Subject, User
+from Student_Management.models import Subject
+from User_management.models import User
 import uuid
 
 class SubjectContent(models.Model):

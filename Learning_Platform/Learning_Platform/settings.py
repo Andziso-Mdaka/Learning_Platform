@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application references
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
 INSTALLED_APPS = [
+    
     # Add your apps here to enable them
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,9 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app', 
     'rest_framework',
     'rest_framework_simplejwt',
+    'app',
+    'Admin_dashboard',
+    'Lecturer_management',
+    'Qualification_management',
+    'Content_management',
+    'Student_Management',
+    'Subject_content_management',
+    'Subject_management',
+    'User_management',
+    
+    
 ]
 
 # Middleware framework
@@ -80,7 +91,7 @@ WSGI_APPLICATION = 'Learning_Platform.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Kayise_DB',
+        'NAME': 'learnerplatform',
         'USER': 'root',
         'PASSWORD': 'password@1',
         'HOST': 'localhost',
@@ -124,4 +135,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
+
+AUTH_USER_MODEL = 'User_management.User'
+
 
