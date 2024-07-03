@@ -1,3 +1,8 @@
-from django.shortcuts import render
+# subject_content/views.py
+from rest_framework import viewsets
+from .models import SubjectContent  # Ensure the correct name is used here
+from .serializers import SubjectContentSerializer
 
-# Create your views here.
+class SubjectContentViewSet(viewsets.ModelViewSet):
+    queryset = SubjectContent.objects.all()
+    serializer_class = SubjectContentSerializer

@@ -35,7 +35,13 @@
     <Compile Include="Admin_dashboard\admin.py" />
     <Compile Include="Admin_dashboard\apps.py" />
     <Compile Include="Admin_dashboard\models.py" />
+    <Compile Include="Admin_dashboard\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Admin_dashboard\tests.py" />
+    <Compile Include="Admin_dashboard\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Admin_dashboard\views.py" />
     <Compile Include="Admin_dashboard\__init__.py" />
     <Compile Include="app\forms.py" />
@@ -58,7 +64,13 @@
     <Compile Include="Lecturer_management\apps.py" />
     <Compile Include="Lecturer_management\migrations\__init__.py" />
     <Compile Include="Lecturer_management\models.py" />
+    <Compile Include="Lecturer_management\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Lecturer_management\tests.py" />
+    <Compile Include="Lecturer_management\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Lecturer_management\views.py" />
     <Compile Include="Lecturer_management\__init__.py" />
     <Compile Include="manage.py" />
@@ -70,21 +82,39 @@
     <Compile Include="Qualification_management\apps.py" />
     <Compile Include="Qualification_management\migrations\__init__.py" />
     <Compile Include="Qualification_management\models.py" />
+    <Compile Include="Qualification_management\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Qualification_management\tests.py" />
+    <Compile Include="Qualification_management\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Qualification_management\views.py" />
     <Compile Include="Qualification_management\__init__.py" />
     <Compile Include="Student_Management\admin.py" />
     <Compile Include="Student_Management\apps.py" />
     <Compile Include="Student_Management\migrations\__init__.py" />
     <Compile Include="Student_Management\models.py" />
+    <Compile Include="Student_Management\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Student_Management\tests.py" />
+    <Compile Include="Student_Management\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Student_Management\views.py" />
     <Compile Include="Student_Management\__init__.py" />
     <Compile Include="Subject_content_management\admin.py" />
     <Compile Include="Subject_content_management\apps.py" />
     <Compile Include="Subject_content_management\migrations\__init__.py" />
     <Compile Include="Subject_content_management\models.py" />
+    <Compile Include="Subject_content_management\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Subject_content_management\tests.py" />
+    <Compile Include="Subject_content_management\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Subject_content_management\views.py" />
     <Compile Include="Subject_content_management\__init__.py" />
     <Compile Include="Subject_management\admin.py" />
@@ -98,7 +128,13 @@
     <Compile Include="User_management\apps.py" />
     <Compile Include="User_management\migrations\__init__.py" />
     <Compile Include="User_management\models.py" />
+    <Compile Include="User_management\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="User_management\tests.py" />
+    <Compile Include="User_management\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="User_management\views.py" />
     <Compile Include="User_management\__init__.py" />
   </ItemGroup>

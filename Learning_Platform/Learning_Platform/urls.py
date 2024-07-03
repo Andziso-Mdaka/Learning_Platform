@@ -25,6 +25,14 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
     path('admin/', admin.site.urls),
     path('api/', include('app.urls')),
+    path('api/users/', include('User_management.urls')),
+    path('api/profiles/', include('User_management.urls')),
+    path('api/qualifications/', include('Qualification_management.urls')),
+    path('api/subjects/', include('Student_Management.urls')),
+    path('api/subjectcontent/', include('Subject_content_management.urls')),
+    path('api/lecturers/', include('Lecturer_management.urls')),
+    path('api/students/', include('Student_Management.urls')),
+    path('api/auditlogs/', include('Admin_dashboard.urls')),
    
 ]
 
