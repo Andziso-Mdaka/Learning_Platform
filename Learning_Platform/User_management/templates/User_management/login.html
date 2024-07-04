@@ -1,3 +1,4 @@
+<!-- user_management/templates/user_management/login.html -->
 
 <!DOCTYPE html>
 <html>
@@ -5,11 +6,12 @@
     <title>Login</title>
 </head>
 <body>
-    <h2>Login</h2>
+    <h1>Login</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Login</button>
     </form>
+    <a href="{% url 'register' %}">Register</a>
 </body>
 </html>

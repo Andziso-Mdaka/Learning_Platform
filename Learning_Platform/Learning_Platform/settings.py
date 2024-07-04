@@ -146,11 +146,13 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'User_management.User'
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.ModelBackend',  # Default backend
+    'user_management.backends.EmailAuthBackend',  # Custom backend for email authentication
 ]
 
-# settings.py
 
-LOGIN_URL = '/User_management/login/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'user_home'
+
 
 
