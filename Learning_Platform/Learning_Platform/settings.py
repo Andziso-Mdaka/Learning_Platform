@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'Learning_Platform.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'learnerplatform',
+        'NAME': 'learner_platform',
         'USER': 'root',
         'PASSWORD': 'password@1',
         'HOST': 'localhost',
@@ -147,7 +147,7 @@ AUTH_USER_MODEL = 'User_management.User'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Default backend
-    'user_management.backends.EmailAuthBackend',  # Custom backend for email authentication
+    
 ]
 
 

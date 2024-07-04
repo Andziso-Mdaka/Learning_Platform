@@ -28,7 +28,6 @@ urlpatterns = [
     path('api/users/', include('User_management.urls')),
     path('api/profiles/', include('User_management.urls')),
     path('', include('User_management.urls')),  # Route root URL to user_management app URLs
-    path('admin/', admin.site.urls),
     path('api/qualifications/', include('Qualification_management.urls')),
     path('api/subjects/', include('Student_Management.urls')),
     path('api/subjectcontent/', include('Subject_content_management.urls')),
