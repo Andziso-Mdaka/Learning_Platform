@@ -7,17 +7,16 @@ from django.conf import settings
 
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    role_choices = (
-        ('admin', 'Admin'),
-        ('lecturer', 'Lecturer'),
-        ('student', 'Student'),
-    )
-    role = models.CharField(max_length=10, choices=role_choices)
+    email = models.EmailField(unique=True)
+    role = models.CharField(max_length=20, choices=[('admin', 'Admin'), ('lecturer', 'Lecturer'), ('student', 'Student')])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
     def __str__(self):
-        return self.username
+        return self.email
 
 
 class Profile(models.Model): 
