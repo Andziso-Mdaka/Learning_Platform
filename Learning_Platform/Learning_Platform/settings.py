@@ -69,10 +69,16 @@ ROOT_URLCONF = 'Learning_Platform.urls'
 
 # Template configuration
 # https://docs.djangoproject.com/en/2.1/topics/templates/
+# settings.py
+
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,6 +90,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'Learning_Platform.wsgi.application'
 # Database
@@ -142,5 +149,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+# settings.py
+
+LOGIN_URL = '/User_management/login/'
 
 

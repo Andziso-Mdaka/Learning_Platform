@@ -126,6 +126,9 @@
     <Compile Include="Subject_management\__init__.py" />
     <Compile Include="User_management\admin.py" />
     <Compile Include="User_management\apps.py" />
+    <Compile Include="User_management\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="User_management\migrations\__init__.py" />
     <Compile Include="User_management\models.py" />
     <Compile Include="User_management\serializers.py">
@@ -221,6 +224,8 @@
     <Content Include="Subject_content_management\templates\Subject_content_management\index.html" />
     <Content Include="Subject_management\templates\Subject_management\index.html" />
     <Content Include="User_management\templates\User_management\index.html" />
+    <Content Include="User_management\templates\User_management\login.html" />
+    <Content Include="User_management\templates\User_management\user_home.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">
