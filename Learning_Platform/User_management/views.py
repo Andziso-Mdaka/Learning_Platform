@@ -33,7 +33,7 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                if user.is_superuser:
+                if user.is_staff or user.is_superuser :
                     return redirect('admin_home')
                 else:
                     return redirect('user_home')
