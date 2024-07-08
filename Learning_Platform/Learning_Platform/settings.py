@@ -92,17 +92,19 @@ TEMPLATES = [
 ]
 
 
+
 WSGI_APPLICATION = 'Learning_Platform.wsgi.application'
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/2.1/ref/settings/#datab ses
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'learner_platform',
-        'USER': 'root',
-        'PASSWORD': 'password@1',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'djongo',
+        'NAME': 'LearnerPlatform',
+        'CLIENT': {
+        'host': 'mongodb+srv://MphoAdmin:GjJUSHhdYBVm2H6@learningplatform.sj3m1dj.mongodb.net/?retryWrites=true&w=majority&appName=LearningPlatform',  # e.g., 'localhost'
+        'username': 'MphoAdmin',
+        'password': 'GjJUSHhdYBVm2H6',
+        }
     }
 }
 

@@ -1,17 +1,19 @@
 <!-- user_management/templates/user_management/login.html -->
+{% extends 'base.html' %}
+{% load static %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login</title>
-</head>
-<body>
-    <h1>Login</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-    <a href="{% url 'register' %}">Register</a>
-</body>
-</html>
+{% block content %}
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+
+{% if user.is_authenticated %}
+    {% if user.is_superuser or user.role == 'admin' %}
+<a href="{% url 'admin_home' %}" class="btn btn-primary">Go to Admin Dashboard</a>
+    {% endif %}
+<a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+{% endif %}
+{% endblock %}

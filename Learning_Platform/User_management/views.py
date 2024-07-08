@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required  # Add this import
-from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, RegisterForm
 from rest_framework import viewsets
 from .models import User, Profile
 from .serializers import UserSerializer, ProfileSerializer
+from django.contrib import messages
 
 # View sets for API endpoints
 class UserViewSet(viewsets.ModelViewSet):
@@ -16,32 +17,31 @@ class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
 
 # Regular views
-@login_required
-def user_home(request):
-    return render(request, 'User_management/user_home.html')
-
-@login_required
-def admin_home(request):
-    return render(request, 'User_management/admin_home.html')
-
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                if user.is_staff or user.is_superuser :
+                if user.is_superuser or user.role == 'admin':
+                    messages.info(request, f"Logged in as {user.email} (Admin)")
                     return redirect('admin_home')
                 else:
+                    messages.info(request, f"Logged in as {user.email} (User)")
                     return redirect('user_home')
             else:
-                form.add_error(None, 'Invalid username or password')
+                form.add_error(None, 'Invalid email or password')
     else:
         form = LoginForm()
-    return render(request, 'User_management/login.html', {'form': form})
+    return render(request, 'user_management/login.html', {'form': form})
+
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 
 def register_view(request):
     if request.method == 'POST':
@@ -51,7 +51,16 @@ def register_view(request):
             return redirect('login')
     else:
         form = RegisterForm()
-    return render(request, 'User_management/register.html', {'form': form})
+    return render(request, 'user_management/register.html', {'form': form})
+
+@login_required
+def user_home(request):
+    return render(request, 'user_management/user_home.html')
+
+@login_required
+@user_passes_test(lambda u: u.is_superuser or u.role == 'admin')
+def admin_home(request):
+    return render(request, 'user_management/admin_home.html')
 
 def landing_page_view(request):
     return render(request, 'User_management/landing_page.html')

@@ -1,13 +1,18 @@
-<!-- user_management/templates/user_management/user_home.html -->
-
+<!-- templates/User_management/user_home.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Home</title>
 </head>
 <body>
-    <h1>User Home</h1>
-    <p>Welcome, {{ user.username }}</p>
-    <a href="{% url 'login' %}">Logout</a>
+    <h1>Welcome to User Home</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+    </nav>
+    <!-- Add other user features here -->
 </body>
 </html>
