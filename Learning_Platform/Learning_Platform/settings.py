@@ -50,8 +50,6 @@ INSTALLED_APPS = [
     'Subject_content_management',
     'Subject_management',
     'User_management',
-    
-    
 ]
 
 # Middleware framework
@@ -101,9 +99,9 @@ DATABASES = {
         'ENGINE': 'djongo',
         'NAME': 'LearnerPlatform',
         'CLIENT': {
-            'host': 'mongodb+srv://MphoAdmin:GjJUSHhdYBVm2H6@learningplatform.sj3m1dj.mongodb.net/?retryWrites=true&w=majority&appName=LearningPlatform',  # e.g., 'localhost'
-            'username': 'MphoAdmin',  # URL-encode username
-            'password': 'GjJUSHhdYBVm2H6', # URL-encode password
+        'host': 'mongodb+srv://MphoAdmin:GjJUSHhdYBVm2H6@learningplatform.sj3m1dj.mongodb.net/?retryWrites=true&w=majority&appName=LearningPlatform',  # e.g., 'localhost'
+        'username': 'MphoAdmin',
+        'password': 'GjJUSHhdYBVm2H6',
         }
     }
 }
@@ -153,6 +151,7 @@ AUTHENTICATION_BACKENDS = [
 
 # settings.py
 
-LOGIN_URL = '/User_management/login/'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'user_home'
 
 

@@ -1,15 +1,12 @@
-# users/serializers.py
+# user_management/serializers.py
+
 from rest_framework import serializers
-from .models import User
+from .models import User, Profile
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
-
-# profiles/serializers.py
-from rest_framework import serializers
-from .models import Profile
 
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
