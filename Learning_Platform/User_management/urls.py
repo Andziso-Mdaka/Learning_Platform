@@ -1,7 +1,6 @@
 # user_management/urls.py
 
 from django.urls import path, include
-from .views import login_view, register_view, landing_page_view, user_home, admin_home
 from rest_framework.routers import DefaultRouter
 from .views import UserViewSet, ProfileViewSet
 

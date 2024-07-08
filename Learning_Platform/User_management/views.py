@@ -21,9 +21,9 @@ def login_view(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
+            email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
-            user = authenticate(request, username=username, password=password)
+            user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
                 if user.is_superuser or user.role == 'admin':
@@ -33,7 +33,7 @@ def login_view(request):
                     messages.info(request, f"Logged in as {user.email} (User)")
                     return redirect('user_home')
             else:
-                form.add_error(None, 'Invalid username or password')
+                form.add_error(None, 'Invalid email or password')
     else:
         form = LoginForm()
     return render(request, 'user_management/login.html', {'form': form})
