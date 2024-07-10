@@ -1,11 +1,15 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required, user_passes_test
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.authtoken.models import Token
+from rest_framework import status
 from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm, RegisterForm
+from .forms import RegisterForm
 from rest_framework import viewsets
 from .models import User, Profile
 from .serializers import UserSerializer, ProfileSerializer
 from django.contrib import messages
+from rest_framework.authtoken.views import ObtainAuthToken
 
 # View sets for API endpoints
 class UserViewSet(viewsets.ModelViewSet):
@@ -17,50 +21,52 @@ class ProfileViewSet(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
 
 # Regular views
+@api_view(['POST'])
+@permission_classes([AllowAny])
 def login_view(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
-            user = authenticate(request, email=email, password=password)
-            if user is not None:
-                login(request, user)
-                if user.is_superuser or user.role == 'admin':
-                    messages.info(request, f"Logged in as {user.email} (Admin)")
-                    return redirect('admin_home')
-                else:
-                    messages.info(request, f"Logged in as {user.email} (User)")
-                    return redirect('user_home')
-            else:
-                form.add_error(None, 'Invalid email or password')
+    email = request.data.get('email')
+    password = request.data.get('password')
+    user = authenticate(request, email=email, password=password)
+    if user is not None:
+        login(request, user)
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({'token': token.key, 'user': UserSerializer(user).data})
     else:
-        form = LoginForm()
-    return render(request, 'user_management/login.html', {'form': form})
+        return Response({'error': 'Invalid email or password'}, status=400)
 
-@login_required
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def logout_view(request):
     logout(request)
-    return redirect('login')
+    return Response({'message': 'Logged out successfully'})
 
+# user_management/views.py
+@api_view(['POST'])
+@permission_classes([AllowAny])
 def register_view(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
+        form = RegisterForm(request.data)
         if form.is_valid():
             form.save()
-            return redirect('login')
-    else:
-        form = RegisterForm()
-    return render(request, 'user_management/register.html', {'form': form})
+            return Response({'message': 'Registration successful'}, status=status.HTTP_201_CREATED)
+        else:
+            return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@login_required
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def user_home(request):
-    return render(request, 'user_management/user_home.html')
+    return Response({'message': f'Welcome {request.user.email} (User)'})
 
-@login_required
-@user_passes_test(lambda u: u.is_superuser or u.role == 'admin')
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def admin_home(request):
-    return render(request, 'user_management/admin_home.html')
+    if request.user.is_superuser or request.user.role == 'admin':
+        return Response({'message': f'Welcome {request.user.email} (Admin)'})
+    else:
+        return Response({'error': 'Access denied'}, status=403)
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
 def landing_page_view(request):
-    return render(request, 'User_management/landing_page.html')
+    return Response({'message': 'Welcome to the landing page'})

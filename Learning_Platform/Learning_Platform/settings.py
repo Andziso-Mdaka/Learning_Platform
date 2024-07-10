@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import posixpath
+import urllib
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -49,8 +50,8 @@ INSTALLED_APPS = [
     'Subject_content_management',
     'Subject_management',
     'User_management',
-    
-    
+    'corsheaders',
+    'rest_framework.authtoken',
 ]
 
 # Middleware framework
@@ -63,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'Learning_Platform.urls'
@@ -92,21 +94,20 @@ TEMPLATES = [
 ]
 
 
-
 WSGI_APPLICATION = 'Learning_Platform.wsgi.application'
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#datab ses
+# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'LearnerPlatform',
-        'CLIENT': {
-        'host': 'mongodb+srv://MphoAdmin:GjJUSHhdYBVm2H6@learningplatform.sj3m1dj.mongodb.net/?retryWrites=true&w=majority&appName=LearningPlatform',  # e.g., 'localhost'
-        'username': 'MphoAdmin',
-        'password': 'GjJUSHhdYBVm2H6',
-        }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'learner_platform',
+        'USER': 'root',
+        'PASSWORD': 'password@1',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation
@@ -148,13 +149,11 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = 'User_management.User'
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',  # Default backend
-    
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
-
+# settings.py
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'user_home'
 
-
-
+CORS_ALLOW_ALL_ORIGINS = True
