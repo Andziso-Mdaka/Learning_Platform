@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'Subject_content_management',
     'Subject_management',
     'User_management',
+    'corsheaders',
 ]
 
 # Middleware framework
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'Learning_Platform.urls'
@@ -150,9 +152,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # settings.py
-
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'user_home'
 
-
-
+CORS_ALLOW_ALL_ORIGINS = True
