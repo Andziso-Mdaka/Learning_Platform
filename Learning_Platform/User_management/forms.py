@@ -1,12 +1,21 @@
-# user_management/forms.py
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from .models import User
 
-class RegisterForm(UserCreationForm):
-    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
-    role = forms.CharField(max_length=10)
+class RegisterForm(forms.ModelForm):
+    email = forms.EmailField(max_length=254)
+    password = forms.CharField(widget=forms.PasswordInput())
+    first_name = forms.CharField(max_length=255)
+    last_name = forms.CharField(max_length=255)
+    role = forms.ChoiceField(choices=[('lecturer', 'Lecturer'), ('student', 'Student')])
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2', 'role']
+        fields = ('email', 'password', 'first_name', 'last_name', 'role')
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password"])
+        user.username = self.cleaned_data["email"]  # Set username to email
+        if commit:
+            user.save()
+        return user

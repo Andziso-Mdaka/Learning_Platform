@@ -32,14 +32,16 @@ class User(AbstractUser):
     role = models.CharField(max_length=10, choices=[('admin', 'Admin'), ('lecturer', 'Lecturer'), ('student', 'Student')])
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
-
-    objects = UserManager()  # Use the custom manager
+    objects = UserManager()
 
     def __str__(self):
         return self.email
+
+    @property
+    def is_lecturer(self):
+        return self.role == 'lecturer'
 
 class Profile(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
