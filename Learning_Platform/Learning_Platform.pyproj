@@ -108,6 +108,9 @@
     <Compile Include="Subject_content_management\apps.py" />
     <Compile Include="Subject_content_management\migrations\__init__.py" />
     <Compile Include="Subject_content_management\models.py" />
+    <Compile Include="Subject_content_management\permissions.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Subject_content_management\serializers.py">
       <SubType>Code</SubType>
     </Compile>
