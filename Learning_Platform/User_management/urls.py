@@ -14,4 +14,6 @@ urlpatterns = [
     path('user_home/', user_home, name='user_home'),
     path('admin_home/', admin_home, name='admin_home'),
     path('landing_page/', landing_page_view, name='landing_page'),
+    
+    
 ]

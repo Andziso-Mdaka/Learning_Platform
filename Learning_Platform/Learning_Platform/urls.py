@@ -32,6 +32,7 @@ urlpatterns = [
     path('api/lecturers/', include('Lecturer_management.urls')),
     path('api/students/', include('Student_Management.urls')),
     path('api/auditlogs/', include('Admin_dashboard.urls')),
+    
 ]
 
 

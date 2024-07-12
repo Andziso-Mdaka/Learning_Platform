@@ -9,4 +9,3 @@ router.register(r'qualifications', QualificationViewSet)
 urlpatterns = [
     path('', include(router.urls)),
 ]
-

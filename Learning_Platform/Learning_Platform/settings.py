@@ -99,13 +99,12 @@ WSGI_APPLICATION = 'Learning_Platform.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'LearnerPlatform',
-        'CLIENT': {
-        'host': 'mongodb+srv://MphoAdmin:GjJUSHhdYBVm2H6@learningplatform.sj3m1dj.mongodb.net/?retryWrites=true&w=majority&appName=LearningPlatform',  # e.g., 'localhost'
-        'username': 'MphoAdmin',
-        'password': 'GjJUSHhdYBVm2H6',
-        }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'learner_platform',
+        'USER': 'root',
+        'PASSWORD': 'Looksmaxxing@7',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -157,3 +156,4 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'user_home'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
